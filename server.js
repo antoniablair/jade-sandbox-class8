@@ -15,7 +15,39 @@ app.set("view engine", "jade");
 
 //in node, dirname is the root of our application
 app.use(express.static(__dirname +"/public"));
+
+// you could call a function like this - (this doesn't do anything)
+
 console.log(express.static("/foo"));
+
+app.use(function(req, res, next){
+   // if you write app.use and don't call next() -- you'll break your app 
+   // middleware allows you to attach data to what's going to your templates
+   // create it with app.use and using a callback function
+   // but you have to use the next parameter when you set it up so you can call it
+   //to create tabs to use on layout.jade
+   res.locals.tabs = [
+      {
+          title: "Home",
+          path: "/",
+          activePath: "/"
+      },
+      {
+          title: "People",
+          path: "/people",
+          activePath: "/people"
+      },
+      {
+          title: "Things",
+          path: "/things",
+          activePath: "/things"
+      }
+    ];
+   
+   next();
+   
+   //the only thing you don't need to call next() on is static files
+});
 
 app.get("/", function(req,res){
     //response to see it's working

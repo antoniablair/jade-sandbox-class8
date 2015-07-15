@@ -6,13 +6,13 @@ html
         link(href="/vendor/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet") 
         // link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet")
     body
-        ul.nav.nav-tabs
-            li 
-                a(href="/") Home
-            li
-                a(href="/people") People
-            li  
-                a(href="/things") Things
+        =tabs
+        //loop over the tabs
+        each tab in tabs
+            ul.nav.nav-tabs
+                li
+                    a(href=tab.path)
+                        =tab.title
         
     
         //dot means div tag in jade
