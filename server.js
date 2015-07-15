@@ -15,6 +15,7 @@ app.set("view engine", "jade");
 
 //in node, dirname is the root of our application
 app.use(express.static(__dirname +"/public"));
+console.log(express.static("/foo"));
 
 app.get("/", function(req,res){
     //response to see it's working
@@ -23,20 +24,20 @@ app.get("/", function(req,res){
    });
 });
 
-// app.get("/people", function(req,res){
-//     //response to see it's working
-//   res.render("people", {
-//       title: "People"
-//   });
-// });
+app.get("/people", function(req,res){
+    //response to see it's working
+  res.render("people", {
+      title: "People"
+  });
+});
 
-// app.get("/things", function(req,res){
-//     //response to see it's working
-//   res.render("things", {
-//       title: "Things"
-//   });
-// });
+app.get("/things", function(req,res){
+    //response to see it's working
+  res.render("things", {
+      title: "Things"
+  });
+});
 
 // should work with any server if it's local
-//to-do: try using another cloud server
+// to-do: try using another cloud server
 app.listen(process.env.PORT);
