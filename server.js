@@ -8,6 +8,9 @@ app.set("view engine", "jade");
 //set up middleware for static route - you're mounting this /public folder
 // to hold static files
 
+// if you request a file from a server, it will look to see if the file is in 
+// static files first
+
 //in node, dirname is the root of our application
 app.use(express.static(__dirname +"/public"));
 
