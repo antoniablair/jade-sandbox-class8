@@ -11,6 +11,8 @@ app.set("view engine", "jade");
 // if you request a file from a server, it will look to see if the file is in 
 // static files first
 
+//static files are meant to be public --- you can access them right from the url
+
 //in node, dirname is the root of our application
 app.use(express.static(__dirname +"/public"));
 
