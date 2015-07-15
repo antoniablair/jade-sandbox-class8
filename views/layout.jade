@@ -6,11 +6,12 @@ html
         link(href="/vendor/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet") 
         // link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet")
     body
-        =tabs
-        //loop over the tabs
-        each tab in tabs
-            ul.nav.nav-tabs
-                li
+        ul.nav.nav-tabs
+            // jade will loop through this
+            each tab in tabs
+                // this is active when my activePath is equal to my tab path
+                // the tab path is defined in server.js object literals
+                li(class={"active": activePath == tab.path})
                     a(href=tab.path)
                         =tab.title
         
