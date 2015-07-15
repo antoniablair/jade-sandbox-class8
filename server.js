@@ -53,6 +53,8 @@ app.use(function(req, res, next){
 });
 
 app.get("/", function(req,res){
+    // i don't need to call next on these - i called next earlier to send
+    // data down to the routes like this one
     //response to see it's working
    res.render("index", {
        title: "Home"
