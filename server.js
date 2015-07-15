@@ -18,8 +18,24 @@ app.use(express.static(__dirname +"/public"));
 
 app.get("/", function(req,res){
     //response to see it's working
-   res.render("index");
+   res.render("index", {
+       title: "Home"
+   });
 });
+
+// app.get("/people", function(req,res){
+//     //response to see it's working
+//   res.render("people", {
+//       title: "People"
+//   });
+// });
+
+// app.get("/things", function(req,res){
+//     //response to see it's working
+//   res.render("things", {
+//       title: "Things"
+//   });
+// });
 
 // should work with any server if it's local
 //to-do: try using another cloud server
