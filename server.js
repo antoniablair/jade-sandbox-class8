@@ -22,7 +22,7 @@ console.log(express.static("/foo"));
 
 
 //this is my express middleware
-// it takes 3 arguments, request, response, and next
+// express middleware is a function that takes 3 arguments, request, response, and next
 app.use(function(req, res, next){
    // if you write app.use and don't call next() -- you'll break your app 
    // middleware allows you to attach data to what's going to your templates
