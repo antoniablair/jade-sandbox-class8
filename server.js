@@ -2,6 +2,7 @@ var express = require("express");
 var Tab = require("./app/tab");
 var db = require("./app/config/db");
 var Thing = require("./app/models/thing");
+var bodyParser = require("body-parser");
 
 db.connect() 
     .then(function(){
@@ -31,6 +32,8 @@ app.use(express.static(__dirname +"/public"));
 
 console.log(express.static("/foo"));
 
+// we're going to take a URL-encoded form and turn it into an object, using the defaults
+app.use(bodyParser.urlencoded({extended: true}));
 
 //this is my express middleware
 // express middleware is a function that takes 3 arguments, request, response, and next
@@ -89,8 +92,22 @@ app.get("/things", function(req,res){
 });
 
 //post object
+// NOTE: npm install body-parser --save to use 
+
+//body-parser will parse a string as data we can use
+
+//to change something, first you find it, then you set it
+
 app.post("/things/:id", function(req, res){
-   res.send("I POSTED"); 
+   Thing.update(
+       // what I'm getting
+       {_id: req.params.id}, 
+       // what I'm setting
+       {$set:{ name: req.body.name }}
+     ).then(function(){
+        // then redirect to the things page so I can see my change
+        res.redirect("/things");
+     });
 });
 
 //request object will go here
