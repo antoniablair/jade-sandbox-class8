@@ -1,5 +1,15 @@
 var express = require("express");
-var Tab = require("./app/tab")
+var Tab = require("./app/tab");
+var db = require("./app/config/db");
+var Thing = require("./app/models/thing");
+
+db.connect() 
+    .then(function(){
+        console.log("connected");
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 
 //exports a method that gives a new express application
 var app = express();
@@ -68,10 +78,14 @@ app.get("/people", function(req,res){
 });
 
 app.get("/things", function(req,res){
-    //response to see it's working
-  res.render("things", {
-      title: "Things"
-  });
+    // find the Thing using mongoose and send it back to me
+    Thing.find({}).then(function(things){
+          res.render("things", {
+        title: "Things",
+        activePath: "/things",
+        things: things
+        });
+    });
 });
 
 // should work with any server if it's local
