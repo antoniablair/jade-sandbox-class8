@@ -11,7 +11,11 @@ html
             each tab in tabs
                 // this is active when my activePath is equal to my tab path
                 // the tab path is defined in server.js object literals
-                li(class={"active": activePath == tab.path})
+                
+                //OLD
+                // li(class={"active": activePath == tab.path})
+                
+                li(class={"active": tab.isActive(activePath)})
                     a(href=tab.path)
                         =tab.title
         

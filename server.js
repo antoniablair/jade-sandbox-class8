@@ -1,5 +1,16 @@
 var express = require("express");
 
+//constructor function
+function Tab(title, path) {
+    this.title = title;
+    this.path = path;
+}
+
+// to add a method to an object i'm creating, create a prototype
+Tab.prototype.isActive = function(activePath){
+    return activePath == this.path;
+};
+
 //exports a method that gives a new express application
 var app = express();
 app.locals.pretty = true;
@@ -30,21 +41,9 @@ app.use(function(req, res, next){
    // but you have to use the next parameter when you set it up so you can call it
    //to create tabs to use on layout.jade
    res.locals.tabs = [
-      {
-          title: "Home",
-          path: "/",
-          activePath: "/"
-      },
-      {
-          title: "People",
-          path: "/people",
-          activePath: "/people"
-      },
-      {
-          title: "Things",
-          path: "/things",
-          activePath: "/things"
-      }
+           new Tab("Home", "/"),
+           new Tab("People", "/people"),
+           new Tab("Things", "/things")
     ];
    
    next();
