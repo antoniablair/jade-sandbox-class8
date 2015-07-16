@@ -7,5 +7,9 @@ block content
         =thing.name
     form.form
         div.form-group
-        label Name
-        input.form-control(value=thing.name)
+            label(for="thing_name") Name
+            input.form-control#thing_name(value=thing.name)
+        div
+            button.btn.btn-primary(type="submit")
+                | Save
+            
