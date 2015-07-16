@@ -88,9 +88,13 @@ app.get("/things", function(req,res){
     });
 });
 
-//request object will go here
+//post object
+app.post("/things/:id", function(req, res){
+   res.send("I POSTED"); 
+});
 
-// detials pages for the Things I puleld from the dbs
+//request object will go here
+// details pages for the Things I puleld from the dbs
 app.get("/things/:id", function(req, res){
     Thing.findById(req.params.id)
         .then(function(thing){
