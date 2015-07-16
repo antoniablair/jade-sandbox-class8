@@ -10,4 +10,4 @@ Tab.prototype.isActive = function(activePath){
 };
 
 //export it so i can use it
-module.exports = Tab
+module.exports = Tab;
