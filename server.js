@@ -89,8 +89,17 @@ app.get("/things", function(req,res){
 });
 
 //request object will go here
+
+// detials pages for the Things I puleld from the dbs
 app.get("/things/:id", function(req, res){
-    res.send(req.params.id);
+    Thing.findById(req.params.id)
+        .then(function(thing){
+            res.render("thing", {
+                activePath: "/things",
+                thing: thing,
+                title: "Thing " + thing.name
+        });
+    });
 });
 
 // should work with any server if it's local
