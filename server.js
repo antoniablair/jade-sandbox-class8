@@ -31,6 +31,16 @@ app.use(function(req, res, next){
    // but you have to use the next parameter when you set it up so you can call it
    //to create tabs to use on layout.jade
    res.locals.tabs = [
+            // Creating an object by calling "New" is a 4-step process:
+       
+            // 1) an object gets created
+            // 2) whatever methods and properties are on the function's prototype, they get added
+            // (in this case, this is the Tab.prototype in app > tab.js)
+            
+            // 3) the function is called, with the 
+            // 'this' keyword pointing to the Object that is created
+            // 4) When the function is done, whatever 'this' is gets passed back
+       
            new Tab("Home", "/"),
            new Tab("People", "/people"),
            new Tab("Things", "/things")
