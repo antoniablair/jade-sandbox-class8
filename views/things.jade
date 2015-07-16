@@ -6,7 +6,8 @@ block content
     ul
         each thing in things
             li
-                =thing.name
+                a(href="/things/#{thing._id}")
+                    =thing.name
                 
     if things.length == 0 
         .alert.alert-danger
