@@ -89,9 +89,9 @@ app.get("/things", function(req,res){
 });
 
 //request object will go here
-// app.get("/things/:id", function(req, res){
-    
-// });
+app.get("/things/:id", function(req, res){
+    res.send(req.params.id);
+});
 
 // should work with any server if it's local
 // to-do: try using another cloud server
